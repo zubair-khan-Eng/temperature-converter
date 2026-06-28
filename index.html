@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A sleek temperature converter — instantly convert between Celsius, Fahrenheit, and Kelvin with real-time updates." />
+  <title>Temperature Converter — °C · °F · K</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌡️</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+
+  <main class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header__icon">
+        <svg class="thermometer-svg" viewBox="0 0 64 64" width="48" height="48" fill="none">
+          <rect x="24" y="6" width="16" height="38" rx="8" stroke="url(#grad)" stroke-width="3"/>
+          <circle cx="32" cy="50" r="10" stroke="url(#grad)" stroke-width="3"/>
+          <circle cx="32" cy="50" r="5" fill="url(#grad)"/>
+          <rect x="29" y="20" width="6" height="24" rx="3" fill="url(#grad)"/>
+          <!-- tick marks -->
+          <line x1="40" y1="16" x2="46" y2="16" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+          <line x1="40" y1="24" x2="44" y2="24" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+          <line x1="40" y1="32" x2="46" y2="32" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="64" y2="64">
+              <stop offset="0%" stop-color="#818cf8"/>
+              <stop offset="100%" stop-color="#6366f1"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="header__title">Temperature Converter</h1>
+      <p class="header__subtitle">Instantly convert between Celsius, Fahrenheit &amp; Kelvin</p>
+    </header>
+
+    <!-- Converter Card -->
+    <section class="card" id="converter-card">
+      <!-- Celsius -->
+      <div class="input-group" id="group-celsius">
+        <label class="input-group__label" for="celsius">
+          <span class="input-group__symbol">°C</span>
+          <span>Celsius</span>
+        </label>
+        <div class="input-group__field-wrapper">
+          <input
+            type="number"
+            id="celsius"
+            class="input-group__input"
+            placeholder="0"
+            autocomplete="off"
+            step="any"
+          />
+          <span class="input-group__unit">°C</span>
+        </div>
+      </div>
+
+      <!-- Divider with arrow -->
+      <div class="divider">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 10l5-5 5 5"/>
+          <path d="M7 14l5 5 5-5"/>
+        </svg>
+      </div>
+
+      <!-- Fahrenheit -->
+      <div class="input-group" id="group-fahrenheit">
+        <label class="input-group__label" for="fahrenheit">
+          <span class="input-group__symbol">°F</span>
+          <span>Fahrenheit</span>
+        </label>
+        <div class="input-group__field-wrapper">
+          <input
+            type="number"
+            id="fahrenheit"
+            class="input-group__input"
+            placeholder="32"
+            autocomplete="off"
+            step="any"
+          />
+          <span class="input-group__unit">°F</span>
+        </div>
+      </div>
+
+      <!-- Divider with arrow -->
+      <div class="divider">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 10l5-5 5 5"/>
+          <path d="M7 14l5 5 5-5"/>
+        </svg>
+      </div>
+
+      <!-- Kelvin -->
+      <div class="input-group" id="group-kelvin">
+        <label class="input-group__label" for="kelvin">
+          <span class="input-group__symbol">K</span>
+          <span>Kelvin</span>
+        </label>
+        <div class="input-group__field-wrapper">
+          <input
+            type="number"
+            id="kelvin"
+            class="input-group__input"
+            placeholder="273.15"
+            autocomplete="off"
+            step="any"
+          />
+          <span class="input-group__unit">K</span>
+        </div>
+      </div>
+
+      <!-- Reset button -->
+      <button class="btn-reset" id="btn-reset" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 1 3.6-7.2"/>
+          <polyline points="3 3 3 8 8 8"/>
+        </svg>
+        Clear All
+      </button>
+    </section>
+
+    <!-- Formulas -->
+    <section class="formulas-card" id="formulas-card">
+      <h2 class="formulas-card__title">Conversion Formulas</h2>
+      <div class="formulas-grid">
+        <div class="formula" id="formula-cf">
+          <span class="formula__badge">C → F</span>
+          <code class="formula__code">°F = (°C × 9/5) + 32</code>
+        </div>
+        <div class="formula" id="formula-fc">
+          <span class="formula__badge">F → C</span>
+          <code class="formula__code">°C = (°F − 32) × 5/9</code>
+        </div>
+        <div class="formula" id="formula-ck">
+          <span class="formula__badge">C → K</span>
+          <code class="formula__code">K = °C + 273.15</code>
+        </div>
+        <div class="formula" id="formula-kc">
+          <span class="formula__badge">K → C</span>
+          <code class="formula__code">°C = K − 273.15</code>
+        </div>
+        <div class="formula" id="formula-fk">
+          <span class="formula__badge">F → K</span>
+          <code class="formula__code">K = (°F − 32) × 5/9 + 273.15</code>
+        </div>
+        <div class="formula" id="formula-kf">
+          <span class="formula__badge">K → F</span>
+          <code class="formula__code">°F = (K − 273.15) × 9/5 + 32</code>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built with pure HTML · CSS · JS — no frameworks</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
